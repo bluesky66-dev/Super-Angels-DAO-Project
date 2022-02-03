@@ -27,3 +27,15 @@ const sdk = new ThirdwebSDK(
     ),
 );
 
+(async () => {
+    try {
+        const apps = await sdk.getApps();
+        console.log("Your app address is:", apps[0].address);
+    } catch (err) {
+        console.error("Failed to get apps from the sdk", err);
+        process.exit(1);
+    }
+})()
+
+// We are exporting the initialized thirdweb SDK so that we can use it in our other scripts
+export default sdk;
