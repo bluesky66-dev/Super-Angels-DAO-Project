@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "React";
+import { useEffect, useMemo, useState } from "react";
 
 // Import ThirdWeb
 import { useWeb3 } from "@3rdweb/hooks";
@@ -13,7 +13,7 @@ const App = () => {
   if (!address) {
     return (
       <div className='landing'>
-        <h1>Welcome to SuperAngelsDAO</h1>
+        <h1>Welcome to SuperAngelsDAO 😇</h1>
         <button onClick={() => connectWallet("injected")} className="btn-hero">
           Connect your wallet
         </button>
@@ -25,9 +25,8 @@ const App = () => {
   // Which means they've connected their wallet to our site
   return (
     <div className="landing">
-      <h1>Welcome to SuperAngels DAO 😇</h1>
-    </div>
-  );
+      <h1>👀 Wallet connected. Now what?</h1>
+    </div>);
 };
 
 export default App;
