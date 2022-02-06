@@ -71,6 +71,28 @@ const App = () => {
     );
   } 
 
+  const mintNFT = () => {
+    setIsClaiming(true);
+    // Call bundleDropModule.claim("0", 1) to mint nft to user's wallet.
+    bundleDropModule
+    .claim("0", 1)
+    .then(() => {
+      // Set claim state
+      setHasClaimedNFT(true);
+      // Show user their fancy new NFT
+      console.log(
+        `🔥 Successfully minted! Check it out on OpenSea: https://testnets.opensea.io/assets/${bundleDropModule.address.toLowerCase()}/0}`
+      );
+    })
+    .catch((err) => {
+      console.error("Failed to claim", err);
+    }) 
+    .finally(() => {
+      // Stop loading state
+      setIsClaiming(false);
+    });
+  }
+
   // When we have the user's address 
   // Which means they've connected their wallet to our site
   return (
