@@ -17,6 +17,9 @@ const App = () => {
   const { connectWallet, address, error, provider } = useWeb3();
   console.log("👋 Address:", address);
 
+  // State variable for us to know if user has our NFT
+  const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
+
   // When the user hasn't connected their wallet
   // to your web app. Let them call connectWallet
   if (!address) {
