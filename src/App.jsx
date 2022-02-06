@@ -70,6 +70,15 @@ const App = () => {
     );
   } 
 
+  if (hasClaimedNFT) {
+    return (
+      <div className="member-page">
+        <h1>🍪 DAO Member Page</h1>
+        <p>Congratulations on being a member!</p>
+      </div>
+    );
+  };
+
   const mintNFT = () => {
     setIsClaiming(true);
     // Call bundleDropModule.claim("0", 1) to mint nft to user's wallet.
