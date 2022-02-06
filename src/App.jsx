@@ -20,6 +20,14 @@ const App = () => {
   // State variable for us to know if user has our NFT
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
 
+  useEffect(() => {
+  // If they don't have a connected wallet, exit!
+  if (!address) {
+    return;
+  }
+
+  })
+
   // When the user hasn't connected their wallet
   // to your web app. Let them call connectWallet
   if (!address) {
