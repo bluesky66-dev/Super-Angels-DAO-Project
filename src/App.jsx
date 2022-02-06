@@ -1,6 +1,9 @@
 import { ThirdwebSDK } from '@3rdweb/sdk';
 import { useEffect, useMemo, useState } from "react";
 
+// We instantiate the sdk on Rinkeby.
+const sdk = new ThirdwebSDK("rinkeby");
+
 // Import ThirdWeb
 import { useWeb3 } from "@3rdweb/hooks";
 
