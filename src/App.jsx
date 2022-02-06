@@ -93,6 +93,19 @@ const App = () => {
     });
   }
 
+  // Render mint NFT screen
+  return(
+    <div className="mint-nft">
+      <h1>Mint your free DAO membership NFT</h1>
+      <button
+        disabled={isClaiming}
+        onClick={() => mintNFT()}
+      >
+        {isClaiming ? "Minting..." : "Mint your NFT (FREE)"}
+      </button>
+    </div>
+  );
+
   // When we have the user's address 
   // Which means they've connected their wallet to our site
   return (
