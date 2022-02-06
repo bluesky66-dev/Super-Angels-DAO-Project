@@ -26,7 +26,24 @@ const App = () => {
     return;
   }
 
-  })
+  // Check if the user has the NFT by using bundleDropModule.balanceOf
+  return bundleDropModule
+    .balanceOf(address, "0")
+    .then((balance) => {
+      // If balance is greater than 0, they have our NFT!
+      if (balance.gt(0)) {
+        setHasClaimedNFT(true);
+        console.log("🌟 This user has a membership NFT!");
+      } else {
+        setHasClaimedNFT(false);
+        console.log("😭 This user has no membership NFT.");
+      }
+    }) 
+    .catch((error) => {
+      setHasClaimedNFT(false);
+      console.error("Failed to NFT balance", error);
+    });
+  }, [address]);
 
   // When the user hasn't connected their wallet
   // to your web app. Let them call connectWallet
