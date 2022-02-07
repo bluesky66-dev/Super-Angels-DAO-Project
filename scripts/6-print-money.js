@@ -15,7 +15,7 @@ const tokenModule = sdk.getTokenModule(
         const amountWith18Decimals = ethers.utils.parseUnits(amount.toString(), 18);
         // Interact with your deployed ERC-20 contract and mint the tokens!
         await tokenModule.mint(amountWith18Decimals);
-        const totalSupply = await tokenModule.totalSupply;
+        const totalSupply = await tokenModule.totalSupply();
 
         // Print out how many of our token's are out there now!
         console.log(
