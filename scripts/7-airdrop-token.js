@@ -30,7 +30,15 @@ const tokenModule = sdk.getTokenModule(
             const randomAmount = Math.floor(Math.random() * (10000 - 1000 + 1) + 1000);
             console.log("✅ Going to airdrop", randomAmount, "tokens to", address);
 
-        })
+            // Set up the target
+            const airdropTarget = {
+                address,
+                // Remember, we need 18 decimal places!
+                amount: ethers.utils.parseUnits(randomAmount.toString(), 18),
+            };
+
+            return airdropTarget;
+        });
         
     }
 })();
