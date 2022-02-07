@@ -6,7 +6,24 @@ const bundleDropModule = sdk.getBundleDropModule(
     "0x267E587a9e541bF967DDB38913C267FBfb5e80C5",
 );
 
-// This is the address to our ERC-20 token contract.
+// This is the address to our ERC-20 token contract
 const tokenModule = sdk.getTokenModule(
     "0x63AdaaDF924A2fb501F2aE4424A520FbdD9Ad55f",
 );
+
+(async () => {
+    try {
+        // Grab all the addresses of people who own our membership NFT, which has 
+        // a tokenId of 0
+        const walletAddresses = await bundleDropModule.getAllClaimerAddresses("0");
+
+        if (walletAddresses.length === 0) {
+            console.log(
+                "No NFTs have been claimed yet. Get some friends to claim your free NFTs!",
+            );
+            process.exit(0);
+        }
+
+        
+    }
+})();
