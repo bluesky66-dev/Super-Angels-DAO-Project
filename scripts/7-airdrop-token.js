@@ -36,9 +36,12 @@ const tokenModule = sdk.getTokenModule(
                 // Remember, we need 18 decimal places!
                 amount: ethers.utils.parseUnits(randomAmount.toString(), 18),
             };
-
             return airdropTarget;
         });
+
+        // Call transferBatch on all our airdrop targets.
+        console.log("🌈 Starting air drop...")
+        await tokenModule.transferBatch(airdropTargets);
         
     }
 })();
