@@ -12,6 +12,10 @@ const bundleDropModule = sdk.getBundleDropModule(
   "0x267E587a9e541bF967DDB38913C267FBfb5e80C5",
 );
 
+const tokenModule = sdk.getTokenModule(
+  "0x63AdaaDF924A2fb501F2aE4424A520FbdD9Ad55f",
+);
+
 const App = () => {
   // Use the connectWallet hook ThirdWeb gives us
   const { connectWallet, address, error, provider } = useWeb3();
