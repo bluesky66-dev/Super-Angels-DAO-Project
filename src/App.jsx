@@ -32,6 +32,9 @@ const App = () => {
 
   // Holds the amount of token each member has in state
   const [memberTokenAmounts, setMemberTokenAmounts] = useState({});
+  // The array holding all of our members' addresses
+  const [memberAddresses, setMemberAddresses] = useState([]);
+
   
 
   // Another useEffect
