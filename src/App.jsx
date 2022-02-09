@@ -30,6 +30,10 @@ const App = () => {
   // isClaiming lets us easily keep a loading state while the NFT is minting
   const [isClaiming, setIsClaiming] = useState(false);
 
+  // Holds the amount of token each member has in state
+  const [memberTokenAmounts, setMemberTokenAmounts] = useState({});
+  
+
   // Another useEffect
   useEffect(() => {
     // We pass the signer to the sdk, which enables us to interact with
