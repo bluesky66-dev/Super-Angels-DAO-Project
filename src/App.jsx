@@ -58,8 +58,24 @@ const App = () => {
         console.error("Failed to get member list", err);
       });
   }, [hasClaimedNFT]);
-
-  // CONTINUE HERE
+  
+  // This useEffect grabs the # of token each member holds
+  useEffect(() => {
+    if (!hasClaimedNFT) {
+      return;
+    }
+    
+    // Grab all the balances
+    tokenModule
+      .getAllHolderBalances()
+      .then((amounts) => {
+        console.log("👜 Amounts", amounts)
+        setMemberTokenAmounts(amounts);
+      })
+      .catch((err) => {
+        console.error("Failed to get token amounts", err);
+      });
+  }, [hasClaimedNFT]);
 
   // Another useEffect
   useEffect(() => {
