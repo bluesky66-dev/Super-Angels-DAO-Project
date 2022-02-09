@@ -35,7 +35,31 @@ const App = () => {
   // The array holding all of our members' addresses
   const [memberAddresses, setMemberAddresses] = useState([]);
 
-  
+  // A fancy function to shorten someone's wallet address, no need to show the whole thing
+  const shortenAddress = (str) => {
+    return str.substring (0,6) + "..." + str.substring(str.length - 4);  
+  };
+
+  // This useEffect grabs all the addresses of our members holding the NFT
+  useEffect(() => {
+    if (!hasClaimedNFT) {
+      return;
+    }
+
+    // Just like we did in the 7-airdrop-token.js file! Grab the users who hold our NFT
+    // with tokenId 0
+    bundleDropModule
+      .getAllClaimerAddresses("0")
+      .then((addresses) => {
+        console.log("🚀 Members' addresses", addresses)
+        setMemberAddresses(addresses);
+      })
+      .catch((err) => {
+        console.error("Failed to get member list", err);
+      });
+  }, [hasClaimedNFT]);
+
+  // CONTINUE HERE
 
   // Another useEffect
   useEffect(() => {
