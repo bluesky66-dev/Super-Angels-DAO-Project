@@ -16,5 +16,11 @@ const appModule = sdk.getAppModule(
         // After a proposal is created, when can members start voting?
         // For now, we set this to immediately
         proposalVotingTimeInSeconds: 24 * 60 * 60,
+
+        votingQuorumFraction: 0,
+
+        // What's the minimum # of tokens a user needs to be allowed to create a proposal?
+        // I set it to 0. Meaning no tokens are required for a user to be allowed to
+        // create a proposal.
     })
 })();
