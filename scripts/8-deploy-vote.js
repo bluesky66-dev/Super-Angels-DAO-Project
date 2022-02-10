@@ -12,5 +12,9 @@ const appModule = sdk.getAppModule(
 
         // This is the location of our governance token, our ERC-20 contract!
         votingTokenAddress: "0x63AdaaDF924A2fb501F2aE4424A520FbdD9Ad55f",
+
+        // After a proposal is created, when can members start voting?
+        // For now, we set this to immediately
+        proposalVotingTimeInSeconds: 24 * 60 * 60,
     })
 })();
