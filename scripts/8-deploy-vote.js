@@ -10,6 +10,7 @@ const appModule = sdk.getAppModule(
         // Give your governance contract a name
         name: "SuperAngelsDAO Epic Proposals",
 
-        
+        // This is the location of our governance token, our ERC-20 contract!
+        votingTokenAddress: "0x63AdaaDF924A2fb501F2aE4424A520FbdD9Ad55f",
     })
 })();
