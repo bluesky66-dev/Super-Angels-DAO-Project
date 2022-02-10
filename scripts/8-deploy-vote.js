@@ -25,5 +25,8 @@ const appModule = sdk.getAppModule(
         minimumNumberOfTokensNeededToPropose: "0",
     });
 
-    
+    console.log(
+        "✅ Successfully deployed vote module, address:",
+        voteModule.address,
+    );
 })();
