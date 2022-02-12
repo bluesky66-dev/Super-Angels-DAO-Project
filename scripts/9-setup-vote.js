@@ -12,5 +12,14 @@ const tokenModule = sdk.getTokenModule(
 );
 
 (async () => {
-    
+    try {
+        // Give our treasury the power to mint additional tokens if needed
+        await tokenModule.grantRole("minter", voteModule.address);
+
+        console.log(
+            "Successfully gave vote module permissions to act on token module"
+        );
+
+    }
+
 })();
