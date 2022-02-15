@@ -19,7 +19,14 @@ const tokenModule = sdk.getTokenModule(
         console.log(
             "Successfully gave vote module permissions to act on token module"
         );
-
+    }   catch (error) {
+        console.error(
+            "Failed to grant vote module permissions on token module",
+            error
+        );
+        process.exit(1);
     }
+
+    
     
 })();
