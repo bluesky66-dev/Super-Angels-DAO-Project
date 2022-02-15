@@ -27,6 +27,13 @@ const tokenModule = sdk.getTokenModule(
         process.exit(1);
     }
 
-    
+    try {
+        // Grab our wallet's token balance, remember -- we hold basically the entire supply right now!
+        const ownedTokenBalance = await tokenModule.balanceOf(
+            // The wallet address stored in your env file
+            process.env.WALLET_ADDRESS
+        );
+
+    }
     
 })();
