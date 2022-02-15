@@ -44,7 +44,8 @@ const tokenModule = sdk.getTokenModule(
             percent90
         );
 
-
-    }
-    
+        console.log("✅ Successfully transferred tokens to vote module");
+    } catch (err) {
+        console.error("Failed to transfer mtokens to vote module", err);
+    }    
 })();
