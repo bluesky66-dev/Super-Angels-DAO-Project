@@ -34,6 +34,9 @@ const tokenModule = sdk.getTokenModule(
             process.env.WALLET_ADDRESS
         );
 
+        // Grab 90% of the supply that we hold
+        const ownedAmount = ethers.BigNumber.from(ownedTokenBalance.value);
+
     }
     
 })();
