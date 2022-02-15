@@ -36,6 +36,7 @@ const tokenModule = sdk.getTokenModule(
 
         // Grab 90% of the supply that we hold
         const ownedAmount = ethers.BigNumber.from(ownedTokenBalance.value);
+        const percent90 = ownedAmount.div(100).mul(90);
 
     }
     
