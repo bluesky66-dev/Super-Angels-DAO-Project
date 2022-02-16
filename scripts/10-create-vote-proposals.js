@@ -9,4 +9,8 @@ const voteModule = sdk.getVoteModule(
 // Our ERC-20 contract
 const tokenModule = sdk.getTokenModule(
     "0x63AdaaDF924A2fb501F2aE4424A520FbdD9Ad55f",
-)
+);
+
+(async () => {
+    
+})();
