@@ -12,5 +12,7 @@ const tokenModule = sdk.getTokenModule(
 );
 
 (async () => {
-    
+    try {
+        const amount = 420_000;
+    }
 })();
