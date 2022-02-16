@@ -14,5 +14,15 @@ const tokenModule = sdk.getTokenModule(
 (async () => {
     try {
         const amount = 420_000;
+        // Create proposal to mint 420,000 new token to the treasury
+        await voteModule.propose(
+            "Should the DAO mint an additional " + amount + "tokens into the treasury?",
+            [
+                {
+                    
+                }
+            ]
+        )
+
     }
 })();
