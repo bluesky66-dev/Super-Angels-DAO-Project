@@ -44,5 +44,8 @@ const tokenModule = sdk.getTokenModule(
         process.exit(1);
     }
 
-    
+    try {
+        
+    }
+
 })();
