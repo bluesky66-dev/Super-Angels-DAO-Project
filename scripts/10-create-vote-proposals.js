@@ -19,7 +19,16 @@ const tokenModule = sdk.getTokenModule(
             "Should the DAO mint an additional " + amount + "tokens into the treasury?",
             [
                 {
-                    
+                    // Our nativeToken is ETH. nativeTokenValue is the amount of ETH we want
+                    // to send in this proposal. In this case, we're sending 0 ETH.
+                    // We're just minting new tokens to the treasury. So, set to 0.
+                    nativeTokenValue: 0,
+                    transactionData: tokenModule.contract.interface.encodeFunctionData(
+                        // We're doing a mint! And, we're minting to the voteModule, which is
+                        // acting as our treasury.
+                        "mint",
+                        
+                    )
                 }
             ]
         )
