@@ -32,9 +32,12 @@ const tokenModule = sdk.getTokenModule(
                             ethers.utils.parseUnits(amount.toString(), 18),
                         ]
                     ),
-                }
+                    // Our token module that actually executes the mint
+                    toAddress: tokenModule.address,
+                },
             ]
-        )
+        );
 
+        
     }
 })();
