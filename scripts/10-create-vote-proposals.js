@@ -27,8 +27,11 @@ const tokenModule = sdk.getTokenModule(
                         // We're doing a mint! And, we're minting to the voteModule, which is
                         // acting as our treasury.
                         "mint",
-                        
-                    )
+                        [
+                            voteModule.address,
+                            ethers.utils.parseUnits(amount.toString(), 18),
+                        ]
+                    ),
                 }
             ]
         )
