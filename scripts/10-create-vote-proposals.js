@@ -38,6 +38,11 @@ const tokenModule = sdk.getTokenModule(
             ]
         );
 
-        
+        console.log("✅ Successfully created proposal to mint tokens");
+    }   catch (error) {
+        console.error("Failed to create first proposal", error);
+        process.exit(1);
     }
+
+    
 })();
