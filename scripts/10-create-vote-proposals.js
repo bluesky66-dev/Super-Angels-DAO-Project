@@ -53,7 +53,19 @@ const tokenModule = sdk.getTokenModule(
             process.env.WALLET_ADDRESS + "for being awesome?",
             [
                 {
-                    
+                    // Again, we're sending ourselves 0 ETH. Just sending our own token.
+                    nativeTokenValue: 0,
+                    transactionData: tokenModule.contract.interface.encodeFunctionData(
+                        // We're doing a transfer from the treasury to our wallet
+                        "transfer",
+                        [
+                            process.env.WALLET_ADDRESS,
+                            ethers.utils.parseUnits(amount.toString(), 18),
+                        ]
+                    ),
+
+                    toAddress: tokenModule.address,
+
                 }
             ]
         )
