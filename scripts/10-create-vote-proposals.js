@@ -45,6 +45,7 @@ const tokenModule = sdk.getTokenModule(
     }
 
     try {
+        const amount = 6_900;
         
     }
 
