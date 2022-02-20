@@ -21,6 +21,9 @@ const voteModule = sdk.getVoteModule(
 );
 
 const [proposals, setProposals] = useState([]);
+const [isVoting, setIsVoting] = useState(false);
+const [hasVoted, setHasVoted] = useState(false);
+
 
 
 const App = () => {
