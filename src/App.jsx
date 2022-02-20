@@ -30,9 +30,13 @@ useEffect( async () => {
     return;
   }
 
+  // A simple call to voteModule.getAll() to grab the proposals
+  try {
+    
+  }
 
 
-  
+
 })
 
 const App = () => {
