@@ -20,6 +20,9 @@ const voteModule = sdk.getVoteModule(
   "0x622533b911038B8AC349aB9fE0450cC492437D4C",
 );
 
+const [proposals, setProposals] = useState([]);
+
+
 const App = () => {
   // Use the connectWallet hook ThirdWeb gives us
   const { connectWallet, address, error, provider } = useWeb3();
