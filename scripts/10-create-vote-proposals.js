@@ -65,11 +65,14 @@ const tokenModule = sdk.getTokenModule(
                     ),
 
                     toAddress: tokenModule.address,
-
-                }
+                },
             ]
-        )
+        );
 
+        console.log(
+            "✅ Successfully created proposal to reward ourselves from the treasury. Let's hope people will vote for it!"
+        );
+    } catch (error) {
+        console.error("Failed to create second proposal", error);
     }
-
 })();
