@@ -24,7 +24,16 @@ const [proposals, setProposals] = useState([]);
 const [isVoting, setIsVoting] = useState(false);
 const [hasVoted, setHasVoted] = useState(false);
 
+// Retrieve all our existing proposals from the contract
+useEffect( async () => {
+  if (!hasClaimedNFT) {
+    return;
+  }
 
+
+
+  
+})
 
 const App = () => {
   // Use the connectWallet hook ThirdWeb gives us
