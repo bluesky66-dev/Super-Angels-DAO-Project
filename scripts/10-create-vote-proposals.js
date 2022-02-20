@@ -46,7 +46,18 @@ const tokenModule = sdk.getTokenModule(
 
     try {
         const amount = 6_900;
-        
+        // Create proposal to transfer ourselves 6,900 tokens for being awesome
+        await voteModule.propose(
+            "Should the DAO transfer " + 
+            amount + " tokens from the treasury to " +
+            process.env.WALLET_ADDRESS + "for being awesome?",
+            [
+                {
+                    
+                }
+            ]
+        )
+
     }
 
 })();
