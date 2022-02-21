@@ -34,12 +34,11 @@ useEffect( async () => {
   try {
     const proposals = await voteModule.getAll();
     setProposals(proposals);
-    
+    console.log("🌈 Proposals", proposals);  
+  } catch (error) {
+    console.log("Failed to get proposals", error);
   }
-
-
-
-})
+}, [hasClaimedNFT]);
 
 const App = () => {
   // Use the connectWallet hook ThirdWeb gives us
