@@ -47,6 +47,11 @@ useEffect(async () => {
   }
 })
 
+// If we haven't finished retrieving the proposals from the useEffect above
+// then we can't check if the user voted yet!
+
+
+
 const App = () => {
   // Use the connectWallet hook ThirdWeb gives us
   const { connectWallet, address, error, provider } = useWeb3();
