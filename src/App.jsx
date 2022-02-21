@@ -40,6 +40,13 @@ useEffect( async () => {
   }
 }, [hasClaimedNFT]);
 
+// We also need to check if the user already voted
+useEffect(async () => {
+  if (!hasClaimedNFT) {
+    return;
+  }
+})
+
 const App = () => {
   // Use the connectWallet hook ThirdWeb gives us
   const { connectWallet, address, error, provider } = useWeb3();
