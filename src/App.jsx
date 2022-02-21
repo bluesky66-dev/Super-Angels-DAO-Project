@@ -32,6 +32,8 @@ useEffect( async () => {
 
   // A simple call to voteModule.getAll() to grab the proposals
   try {
+    const proposals = await voteModule.getAll();
+    setProposals(proposals);
     
   }
 
