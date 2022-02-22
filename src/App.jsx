@@ -55,7 +55,7 @@ if (!proposals.length) {
 
 // Check if the user has already voted on the first proposal
 try {
-  
+  const hasVoted = await voteModule.hasVoted(proposals[0].proposalId, address);  
 }
 
 
