@@ -53,6 +53,12 @@ if (!proposals.length) {
   return;
 }
 
+// Check if the user has already voted on the first proposal
+try {
+  
+}
+
+
 
 
 const App = () => {
