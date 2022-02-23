@@ -45,7 +45,6 @@ useEffect(async () => {
   if (!hasClaimedNFT) {
     return;
   }
-})
 
 // If we haven't finished retrieving the proposals from the useEffect above
 // then we can't check if the user voted yet!
@@ -66,9 +65,6 @@ try {
   console.error("Failed to check if wallet has voted", error);
   }
 }, [hasClaimedNFT, proposals, address]);
-
-
-
 
 const App = () => {
   // Use the connectWallet hook ThirdWeb gives us
