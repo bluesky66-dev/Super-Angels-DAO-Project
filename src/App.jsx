@@ -63,9 +63,9 @@ try {
     console.log("🙂 User has not voted yet.");
   }
 } catch (error) {
-  
-}
-}
+  console.error("Failed to check if wallet has voted", error);
+  }
+}, [hasClaimedNFT, proposals, address]);
 
 
 
