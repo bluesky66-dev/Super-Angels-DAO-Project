@@ -57,8 +57,11 @@ if (!proposals.length) {
 try {
   const hasVoted = await voteModule.hasVoted(proposals[0].proposalId, address);  
   setHasVoted(hasVoted);
-
-
+  if(hasVoted) {
+    console.log("🥵 User has already voted.");
+  } else {
+    console.log("🙂 User has not voted yet.");
+  }
   
 }
 
