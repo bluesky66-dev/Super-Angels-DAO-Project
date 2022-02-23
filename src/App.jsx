@@ -62,7 +62,9 @@ try {
   } else {
     console.log("🙂 User has not voted yet.");
   }
+} catch (error) {
   
+}
 }
 
 
