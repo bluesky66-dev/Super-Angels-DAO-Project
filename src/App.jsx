@@ -20,7 +20,29 @@ const voteModule = sdk.getVoteModule(
   "0x622533b911038B8AC349aB9fE0450cC492437D4C",
 );
 
+const App = () => {
+  // Use the connectWallet hook ThirdWeb gives us
+  const { connectWallet, address, error, provider } = useWeb3();
+  console.log("👋 Address:", address);
 
+  // The signer is required to sign transactions on the blockchain
+  // Without it we can only read data, not write
+  const signer = provider ? provider.getSigner() : undefined;
+
+  // State variable for us to know if user has our NFT
+  const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
+  // isClaiming lets us easily keep a loading state while the NFT is minting
+  const [isClaiming, setIsClaiming] = useState(false);
+
+  // Holds the amount of token each member has in state
+  const [memberTokenAmounts, setMemberTokenAmounts] = useState({});
+  // The array holding all of our members' addresses
+  const [memberAddresses, setMemberAddresses] = useState([]);
+
+  // A fancy function to shorten someone's wallet address, no need to show the whole thing
+  const shortenAddress = (str) => {
+    return str.substring (0,6) + "..." + str.substring(str.length - 4);  
+  };
 
 // Retrieve all our existing proposals from the contract
 useEffect( async () => {
@@ -64,29 +86,6 @@ try {
   }
 }, [hasClaimedNFT, proposals, address]);
 
-const App = () => {
-  // Use the connectWallet hook ThirdWeb gives us
-  const { connectWallet, address, error, provider } = useWeb3();
-  console.log("👋 Address:", address);
-
-  // The signer is required to sign transactions on the blockchain
-  // Without it we can only read data, not write
-  const signer = provider ? provider.getSigner() : undefined;
-
-  // State variable for us to know if user has our NFT
-  const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
-  // isClaiming lets us easily keep a loading state while the NFT is minting
-  const [isClaiming, setIsClaiming] = useState(false);
-
-  // Holds the amount of token each member has in state
-  const [memberTokenAmounts, setMemberTokenAmounts] = useState({});
-  // The array holding all of our members' addresses
-  const [memberAddresses, setMemberAddresses] = useState([]);
-
-  // A fancy function to shorten someone's wallet address, no need to show the whole thing
-  const shortenAddress = (str) => {
-    return str.substring (0,6) + "..." + str.substring(str.length - 4);  
-  };
 
   // This useEffect grabs all the addresses of our members holding the NFT
   useEffect(() => {
