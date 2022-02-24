@@ -20,9 +20,7 @@ const voteModule = sdk.getVoteModule(
   "0x622533b911038B8AC349aB9fE0450cC492437D4C",
 );
 
-const [proposals, setProposals] = useState([]);
-const [isVoting, setIsVoting] = useState(false);
-const [hasVoted, setHasVoted] = useState(false);
+
 
 // Retrieve all our existing proposals from the contract
 useEffect( async () => {
@@ -173,6 +171,10 @@ const App = () => {
       console.error("Failed to NFT balance", error);
     });
   }, [address]);
+
+  const [proposals, setProposals] = useState([]);
+  const [isVoting, setIsVoting] = useState(false);
+  const [hasVoted, setHasVoted] = useState(false);
 
   // When the user hasn't connected their wallet
   // to your web app. Let them call connectWallet
