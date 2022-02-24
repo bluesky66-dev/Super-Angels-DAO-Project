@@ -189,39 +189,9 @@ const App = () => {
 
   // If the user has already claimed their NFT we want to display the interal DAO page to them
   // only DAO members will see this. Render all the members + token amounts.
-
+  
   // Change the entire contents of if (hasClaimedNFT {})
-  if (hasClaimedNFT) {
-    return (
-      <div className="member-page">
-        <h1>🍪 DAO Member Page</h1>
-        <p>Congratulations on being a member!</p>
-        <div>
-          <div>
-            <h2>Member List</h2>
-            <table className="card">
-              <thead>
-                <tr>
-                  <th>Address</th>
-                  <th>Token Amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {memberList.map((member) => {
-                  return (
-                    <tr key={member.address}>
-                      <td>{shortenAddress(member.address)}</td>
-                      <td>{member.tokenAmount}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    );
-  };
+
 
   const mintNFT = () => {
     setIsClaiming(true);
