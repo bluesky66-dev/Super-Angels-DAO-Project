@@ -1,6 +1,8 @@
-import { ethers } from "ethers";
-import { ThirdwebSDK } from '@3rdweb/sdk';
 import { useEffect, useMemo, useState } from "react";
+import { ethers } from "ethers";
+
+import { ThirdwebSDK } from '@3rdweb/sdk';
+
 // Import ThirdWeb
 import { useWeb3 } from "@3rdweb/hooks";
 
