@@ -45,6 +45,25 @@ const App = () => {
     return str.substring (0,6) + "..." + str.substring(str.length - 4);  
   };
 
+// This useEffect grabs all the addresses of our members holding the NFT
+useEffect(() => {
+    if (!hasClaimedNFT) {
+      return;
+    }
+
+    // Just like we did in the 7-airdrop-token.js file! Grab the users who hold our NFT
+    // with tokenId 0
+    bundleDropModule
+      .getAllClaimerAddresses("0")
+      .then((addresses) => {
+        console.log("🚀 Members' addresses", addresses)
+        setMemberAddresses(addresses);
+      })
+      .catch((err) => {
+        console.error("Failed to get member list", err);
+      });
+  }, [hasClaimedNFT]);
+
 // Retrieve all our existing proposals from the contract
 useEffect( async () => {
   if (!hasClaimedNFT) {
@@ -86,26 +105,6 @@ try {
   console.error("Failed to check if wallet has voted", error);
   }
 }, [hasClaimedNFT, proposals, address]);
-
-
-  // This useEffect grabs all the addresses of our members holding the NFT
-  useEffect(() => {
-    if (!hasClaimedNFT) {
-      return;
-    }
-
-    // Just like we did in the 7-airdrop-token.js file! Grab the users who hold our NFT
-    // with tokenId 0
-    bundleDropModule
-      .getAllClaimerAddresses("0")
-      .then((addresses) => {
-        console.log("🚀 Members' addresses", addresses)
-        setMemberAddresses(addresses);
-      })
-      .catch((err) => {
-        console.error("Failed to get member list", err);
-      });
-  }, [hasClaimedNFT]);
   
   // This useEffect grabs the # of token each member holds
   useEffect(() => {
