@@ -82,6 +82,21 @@ useEffect(() => {
     });
 }, [hasClaimedNFT]);
 
+// Now, we combine the memberAddresses and memberTokenAmounts into a single array
+const memberList = useMemo(() => {
+  return memberAddresses.map((address) => {
+    return {
+      address,
+      tokenAmount: ethers.utils.formatUnits(
+        // If the address isn't in memberTokenAmounts, it means they don't
+        // hold any of our token
+        memberTokenAmounts[address] || 0,
+        18,
+      ),
+    };
+  });
+}, [memberAddresses, memberTokenAmounts]);
+
 // Retrieve all our existing proposals from the contract
 useEffect( async () => {
   if (!hasClaimedNFT) {
@@ -124,20 +139,7 @@ try {
   }
 }, [hasClaimedNFT, proposals, address]);
 
-  // Now, we combine the memberAddresses and memberTokenAmounts into a single array
-  const memberList = useMemo(() => {
-    return memberAddresses.map((address) => {
-      return {
-        address,
-        tokenAmount: ethers.utils.formatUnits(
-          // If the address isn't in memberTokenAmounts, it means they don't
-          // hold any of our token
-          memberTokenAmounts[address] || 0,
-          18,
-        ),
-      };
-    });
-  }, [memberAddresses, memberTokenAmounts]);
+  
 
   // Another useEffect
   useEffect(() => {
