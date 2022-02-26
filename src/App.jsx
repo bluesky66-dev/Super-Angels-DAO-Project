@@ -129,6 +129,10 @@ return bundleDropModule
   });
 }, [address]);
 
+const [proposals, setProposals] = useState([]);
+const [isVoting, setIsVoting] = useState(false);
+const [hasVoted, setHasVoted] = useState(false);
+
 // Retrieve all our existing proposals from the contract
 useEffect( async () => {
   if (!hasClaimedNFT) {
@@ -170,10 +174,6 @@ try {
   console.error("Failed to check if wallet has voted", error);
   }
 }, [hasClaimedNFT, proposals, address]);
-
-const [proposals, setProposals] = useState([]);
-const [isVoting, setIsVoting] = useState(false);
-const [hasVoted, setHasVoted] = useState(false);
 
   // When the user hasn't connected their wallet
   // to your web app. Let them call connectWallet
