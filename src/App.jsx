@@ -97,6 +97,38 @@ const memberList = useMemo(() => {
   });
 }, [memberAddresses, memberTokenAmounts]);
 
+// Another useEffect
+useEffect(() => {
+  // We pass the signer to the sdk, which enables us to interact with
+  // our deployed contract!
+  sdk.setProviderOrSigner(signer);
+}, [signer]);
+
+useEffect(() => {
+// If they don't have a connected wallet, exit!
+if (!address) {
+  return;
+}
+
+// Check if the user has the NFT by using bundleDropModule.balanceOf
+return bundleDropModule
+  .balanceOf(address, "0")
+  .then((balance) => {
+    // If balance is greater than 0, they have our NFT!
+    if (balance.gt(0)) {
+      setHasClaimedNFT(true);
+      console.log("🌟 This user has a membership NFT!");
+    } else {
+      setHasClaimedNFT(false);
+      console.log("😭 This user has no membership NFT.");
+    }
+  }) 
+  .catch((error) => {
+    setHasClaimedNFT(false);
+    console.error("Failed to NFT balance", error);
+  });
+}, [address]);
+
 // Retrieve all our existing proposals from the contract
 useEffect( async () => {
   if (!hasClaimedNFT) {
@@ -139,43 +171,9 @@ try {
   }
 }, [hasClaimedNFT, proposals, address]);
 
-  
-
-  // Another useEffect
-  useEffect(() => {
-    // We pass the signer to the sdk, which enables us to interact with
-    // our deployed contract!
-    sdk.setProviderOrSigner(signer);
-  }, [signer]);
-
-  useEffect(() => {
-  // If they don't have a connected wallet, exit!
-  if (!address) {
-    return;
-  }
-
-  // Check if the user has the NFT by using bundleDropModule.balanceOf
-  return bundleDropModule
-    .balanceOf(address, "0")
-    .then((balance) => {
-      // If balance is greater than 0, they have our NFT!
-      if (balance.gt(0)) {
-        setHasClaimedNFT(true);
-        console.log("🌟 This user has a membership NFT!");
-      } else {
-        setHasClaimedNFT(false);
-        console.log("😭 This user has no membership NFT.");
-      }
-    }) 
-    .catch((error) => {
-      setHasClaimedNFT(false);
-      console.error("Failed to NFT balance", error);
-    });
-  }, [address]);
-
-  const [proposals, setProposals] = useState([]);
-  const [isVoting, setIsVoting] = useState(false);
-  const [hasVoted, setHasVoted] = useState(false);
+const [proposals, setProposals] = useState([]);
+const [isVoting, setIsVoting] = useState(false);
+const [hasVoted, setHasVoted] = useState(false);
 
   // When the user hasn't connected their wallet
   // to your web app. Let them call connectWallet
