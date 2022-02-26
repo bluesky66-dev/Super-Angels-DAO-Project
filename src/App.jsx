@@ -1,3 +1,4 @@
+import { UnsupportedChainIdError } from "@web3-react/core";
 import { useEffect, useMemo, useState } from "react";
 import { ethers } from "ethers";
 
