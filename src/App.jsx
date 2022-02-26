@@ -176,6 +176,17 @@ useEffect(() => {
     });
 }, [hasClaimedNFT, proposals, address]);
 
+if (error instanceof UnsupportedChainIdError) {
+  return (
+    <div className="unsupported-network">
+      <h2>Please connect to Rinkeby</h2>
+      <p>
+        This dApp only works on the Rinkeby network. Please switch networks in your connected wallet.
+      </p>
+    </div>
+  );
+}
+
 if (error && error.name === "UnsupportedChainIdError") {
   return (
     <div className="unsupported-network">
@@ -358,7 +369,6 @@ if (!address) {
       </div>
     );
   };
-
 
   const mintNFT = () => {
     setIsClaiming(true);
