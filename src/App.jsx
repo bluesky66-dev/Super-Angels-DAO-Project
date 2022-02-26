@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { ethers } from "ethers";
+
 // Import ThirdWeb
 import { useWeb3 } from "@3rdweb/hooks";
 import { ThirdwebSDK } from '@3rdweb/sdk';
@@ -63,6 +64,24 @@ useEffect(() => {
       });
   }, [hasClaimedNFT]);
 
+// This useEffect grabs the # of token each member holds
+useEffect(() => {
+  if (!hasClaimedNFT) {
+    return;
+  }
+  
+  // Grab all the balances
+  tokenModule
+    .getAllHolderBalances()
+    .then((amounts) => {
+      console.log("👜 Amounts", amounts)
+      setMemberTokenAmounts(amounts);
+    })
+    .catch((err) => {
+      console.error("Failed to get token amounts", err);
+    });
+}, [hasClaimedNFT]);
+
 // Retrieve all our existing proposals from the contract
 useEffect( async () => {
   if (!hasClaimedNFT) {
@@ -104,24 +123,6 @@ try {
   console.error("Failed to check if wallet has voted", error);
   }
 }, [hasClaimedNFT, proposals, address]);
-  
-  // This useEffect grabs the # of token each member holds
-  useEffect(() => {
-    if (!hasClaimedNFT) {
-      return;
-    }
-    
-    // Grab all the balances
-    tokenModule
-      .getAllHolderBalances()
-      .then((amounts) => {
-        console.log("👜 Amounts", amounts)
-        setMemberTokenAmounts(amounts);
-      })
-      .catch((err) => {
-        console.error("Failed to get token amounts", err);
-      });
-  }, [hasClaimedNFT]);
 
   // Now, we combine the memberAddresses and memberTokenAmounts into a single array
   const memberList = useMemo(() => {
