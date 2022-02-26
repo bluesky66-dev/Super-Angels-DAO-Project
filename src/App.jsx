@@ -151,7 +151,52 @@ useEffect(() => {
     });
 }, [hasClaimedNFT]);
 
+// We also need to check if the user already voted.
+useEffect(() => {
+  if (!hasClaimedNFT) {
+    return;
+  }
 
+  // If we haven't finished retreieving the proposals from the useEffect above
+  // then we can't check if the user voted yet!
+  if (!proposals.length) {
+    return;
+  }
+
+  // Check if the user has already voted on the first proposal.
+  voteModule
+    .hasVoted(proposals[0].proposalId, address)
+    .then((hasVoted) => {
+      setHasVoted(hasVoted);
+      console.log("🥵 User has already voted");
+    })
+    .catch((err) => {
+      console.error("failed to check if wallet has voted", err);
+    });
+}, [hasClaimedNFT, proposals, address]);
+
+if (error && error.name === "UnsupportedChainIdError") {
+  return (
+    <div className="unsupported-network">
+      <h2>Please connect to Rinkeby</h2>
+      <p>
+        This dapp only works on the Rinkeby network, please switch networks
+        in your connected wallet.
+      </p>
+    </div>
+  );
+}
+
+if (!address) {
+  return (
+    <div className="landing">
+      <h1>Welcome to NarutoDAO</h1>
+      <button onClick={() => connectWallet("injected")} className="btn-hero">
+        Connect your wallet
+      </button>
+    </div>
+  );
+}
 
   // If the user has already claimed their NFT we want to display the interal DAO page to them
   // only DAO members will see this. Render all the members + token amounts.
