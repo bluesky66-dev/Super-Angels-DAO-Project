@@ -151,60 +151,7 @@ useEffect(() => {
     });
 }, [hasClaimedNFT]);
 
-// Retrieve all our existing proposals from the contract
-useEffect( async () => {
-  if (!hasClaimedNFT) {
-    return;
-  }
 
-  // A simple call to voteModule.getAll() to grab the proposals
-  try {
-    const proposals = await voteModule.getAll();
-    setProposals(proposals);
-    console.log("🌈 Proposals", proposals);  
-  } catch (error) {
-    console.log("Failed to get proposals", error);
-  }
-}, [hasClaimedNFT]);
-
-// We also need to check if the user already voted
-useEffect(async () => {
-  if (!hasClaimedNFT) {
-    return;
-  }
-
-// If we haven't finished retrieving the proposals from the useEffect above
-// then we can't check if the user voted yet!
-if (!proposals.length) {
-  return;
-}
-
-// Check if the user has already voted on the first proposal
-try {
-  const hasVoted = await voteModule.hasVoted(proposals[0].proposalId, address);  
-  setHasVoted(hasVoted);
-  if(hasVoted) {
-    console.log("🥵 User has already voted.");
-  } else {
-    console.log("🙂 User has not voted yet.");
-  }
-} catch (error) {
-  console.error("Failed to check if wallet has voted", error);
-  }
-}, [hasClaimedNFT, proposals, address]);
-
-  // When the user hasn't connected their wallet
-  // to your web app. Let them call connectWallet
-  if (!address) {
-    return (
-      <div className='landing'>
-        <h1>Welcome to SuperAngelsDAO 😇</h1>
-        <button onClick={() => connectWallet("injected")} className="btn-hero">
-          Connect your wallet
-        </button>
-      </div>
-    );
-  } 
 
   // If the user has already claimed their NFT we want to display the interal DAO page to them
   // only DAO members will see this. Render all the members + token amounts.
