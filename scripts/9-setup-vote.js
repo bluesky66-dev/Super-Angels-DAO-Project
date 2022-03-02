@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-
 import sdk from "./1-initialize-sdk.js";
 
 // This is our governance smart contract
