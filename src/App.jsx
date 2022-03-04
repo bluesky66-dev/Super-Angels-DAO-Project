@@ -403,5 +403,3 @@ if (!address) {
 };
 
 export default App;
-
-// The app works but can't be deployed to Vercel due to an issue with the npm version
