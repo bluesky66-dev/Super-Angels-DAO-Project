@@ -181,7 +181,7 @@ if (error instanceof UnsupportedChainIdError) {
     <div className="unsupported-network">
       <h2>Please connect to Rinkeby</h2>
       <p>
-        This dApp only works on the Rinkeby network. Please switch networks in your connected wallet.
+        This dApp only works on the Rinkeby network. Please switch to this network in your connected wallet.
       </p>
     </div>
   );
