@@ -176,17 +176,6 @@ useEffect(() => {
     });
 }, [hasClaimedNFT, proposals, address]);
 
-if (error instanceof UnsupportedChainIdError) {
-  return (
-    <div className="unsupported-network">
-      <h2>Please connect to Rinkeby network</h2>
-      <p>
-        This dApp only works on the Rinkeby network. Please switch to this network in your connected wallet.
-      </p>
-    </div>
-  );
-}
-
 if (error && error.name === "UnsupportedChainIdError") {
   return (
     <div className="unsupported-network">
