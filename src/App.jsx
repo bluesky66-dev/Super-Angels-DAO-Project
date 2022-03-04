@@ -398,7 +398,7 @@ if (!address) {
   // Which means they've connected their wallet to our site
   return (
     <div className="landing">
-      <h1>👀 Wallet connected. Now what?</h1>
+      <h1>👀 Your wallet is now connected. What's next?</h1>
     </div>);
 };
 
