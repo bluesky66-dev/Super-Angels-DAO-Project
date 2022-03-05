@@ -1,5 +1,4 @@
 import { ethers } from "ethers";
-
 import sdk from "./1-initialize-sdk.js";
 
 // This is the address of our ERC-20 contract printed out in the step before
