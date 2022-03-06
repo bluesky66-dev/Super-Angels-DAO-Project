@@ -23,6 +23,7 @@ const voteModule = sdk.getVoteModule(
 );
 
 const App = () => {
+  
   // Use the connectWallet hook ThirdWeb gives us
   const { connectWallet, address, error, provider } = useWeb3();
   console.log("👋 Address:", address);
