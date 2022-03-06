@@ -28,9 +28,10 @@ const App = () => {
 
   const { connectWallet, address, error, provider } = useWeb3();
   console.log("👋 Address:", address);
-  
+
   // The signer is required to sign transactions on the blockchain
   // Without it we can only read data, not write
+  
   const signer = provider ? provider.getSigner() : undefined;
   // State variable for us to know if user has our NFT
   const [hasClaimedNFT, setHasClaimedNFT] = useState(false);
