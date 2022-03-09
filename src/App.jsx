@@ -365,6 +365,7 @@ if (!address) {
 
   const mintNFT = () => {
     setIsClaiming(true);
+    
     // Call bundleDropModule.claim("0", 1) to mint nft to user's wallet.
     bundleDropModule
     .claim("0", 1)
